@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Instrumento</title>
+</head>
+<body>
+
+    <h1>Editar Instrumento</h1>
+
+    <form action="/instrumento/editar/ok/<%= instrumento._id %>" method="POST">
+
+        <label>Nome:</label>
+        <input
+            type="text"
+            name="nome"
+            value="<%= instrumento.nome %>"
+            required
+        >
+
+        <br><br>
+
+        <label>Fabricante:</label>
+        <input
+            type="text"
+            name="fabricante"
+            value="<%= instrumento.fabricante %>"
+        >
+
+        <br><br>
+
+        <label>Preço:</label>
+        <input
+            type="number"
+            name="preco"
+            step="0.01"
+            value="<%= instrumento.preco %>"
+        >
+
+        <br><br>
+
+        <label>Tipo:</label>
+        <input
+            type="text"
+            name="tipo"
+            value="<%= instrumento.tipo %>"
+        >
+
+        <br><br>
+
+        <button type="submit">Salvar Alterações</button>
+
+    </form>
+
+    <br>
+
+    <a href="/instrumento/lst">Voltar para lista</a>
+
+</body>
+</html>

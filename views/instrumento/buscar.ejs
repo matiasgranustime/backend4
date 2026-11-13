@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pesquisar Instrumentos</title>
+</head>
+<body>
+
+    <h1>Pesquisar Instrumentos</h1>
+
+    <form action="/instrumento/buscar/resultado" method="GET">
+
+        <label>Nome do instrumento:</label>
+
+        <input
+            type="text"
+            name="nome"
+            value="<%= pesquisa %>"
+            placeholder="Digite o nome"
+            required
+        >
+
+        <button type="submit">Pesquisar</button>
+
+    </form>
+
+    <hr>
+
+    <h2>Resultados da pesquisa</h2>
+
+    <% if (instrumentos.length === 0) { %>
+
+        <p>Nenhum instrumento encontrado.</p>
+
+    <% } else { %>
+
+        <table border="1" cellpadding="10">
+
+            <tr>
+                <th>Nome</th>
+                <th>Fabricante</th>
+                <th>Preço</th>
+                <th>Tipo</th>
+            </tr>
+
+            <% instrumentos.forEach(i => { %>
+
+                <tr>
+                    <td><%= i.nome %></td>
+                    <td><%= i.fabricante %></td>
+                    <td>R$ <%= i.preco %></td>
+                    <td><%= i.tipo %></td>
+                </tr>
+
+            <% }) %>
+
+        </table>
+
+    <% } %>
+
+    <br>
+
+    <a href="/instrumento/lst">Voltar para lista</a>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Instrumentos</title>
+</head>
+
+<body>
+
+    <h2>Lista de Instrumentos</h2>
+
+    <a href="/instrumento/add">Adicionar Instrumento</a>
+
+    <br><br>
+
+    <a href="/instrumento/buscar">Pesquisar Instrumentos</a>
+
+    <br><br>
+
+    <% if (instrumentos.length === 0) { %>
+
+        <p>Nenhum instrumento cadastrado.</p>
+
+    <% } else { %>
+
+        <table border="1" cellpadding="10">
+
+            <tr>
+                <th>Nome</th>
+                <th>Fabricante</th>
+                <th>Preço</th>
+                <th>Tipo</th>
+                <th>Ação</th>
+            </tr>
+
+            <% instrumentos.forEach(i => { %>
+
+                <tr>
+
+                    <td><%= i.nome %></td>
+
+                    <td><%= i.fabricante %></td>
+
+                    <td>R$ <%= i.preco %></td>
+
+                    <td><%= i.tipo %></td>
+
+                    
+<td>
+    <a href="/instrumento/editar/<%= i._id %>">
+        <button type="button">Editar</button>
+    </a>
+
+    <form action="/instrumento/excluir/<%= i._id %>" method="POST"
+          style="display:inline;">
+
+        <button type="submit"
+            onclick="return confirm('Deseja realmente excluir este instrumento?')">
+            Excluir
+        </button>
+
+    </form>
+</td>
+
+                </tr>
+
+            <% }) %>
+
+        </table>
+
+    <% } %>
+
+    <br>
+
+    <a href="/">Voltar ao início</a>
+
+</body>
+</html>
